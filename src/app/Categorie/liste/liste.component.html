@@ -1,0 +1,33 @@
+<div class="container mt-5">
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button class="btn btn-outline-primary me-md-2" type="button"  routerLink="/categorie/create">
+            <i class="fa-solid fa-plus"></i> Ajouter categorie
+        </button>
+    </div>
+    <table class="table mt-5">
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Quantité</th>
+            <th scope="col">Date De Creation</th>
+            <th scope="col">Date De Modification</th>
+            <th scope="col" >Detail</th>
+            <th scope="col" *ngIf="isAdmin">Update</th>
+            <th scope="col" *ngIf="isAdmin">Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let c of categories ">
+            <td>{{c.id}}</td>
+            <td>{{c.nom}}</td>
+            <td>{{c.qt}}</td>
+            <td>{{c.dateCreation}}</td>
+            <td>{{c.dateModif}}</td>
+            <td ><button class="btn btn-outline-primary" routerLink="/categorie/detail/{{c.id}}"><i class="far fa-eye"></i> Detail</button></td>
+            <td *ngIf="isAdmin"><button class="btn btn-outline-warning" routerLink="/categorie/update/{{c.id}}"><i class="far fa-edit"></i> Update</button></td>
+            <td *ngIf="isAdmin"><button class="btn btn-outline-danger"><i class="far fa-trash-alt"></i> Delete</button></td>
+        </tr>
+        </tbody>
+    </table>
+</div>

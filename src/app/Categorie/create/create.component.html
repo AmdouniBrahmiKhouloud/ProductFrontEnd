@@ -1,0 +1,36 @@
+<div class="container mt-4">
+    <div class="row">
+        <div class="card-footer">
+            <button class="btn btn-outline-primary btn-block" (click)="backToList()">
+                <i class="far fa-arrow-alt-circle-left"></i> Retour à la liste</button>
+        </div>
+        <div class="col-md-4 mx-auto">
+            <form [formGroup]="myForm"  (ngSubmit)="onCreate(myForm)">
+                <div class="form-group">
+                    <label>Nom</label>
+                    <input type="text" class="form-control" formControlName="nom">
+                    <div class="alert alert-danger" *ngIf="myForm.controls['nom'].invalid && myForm.controls['nom'].touched">
+                        <div *ngIf="myForm.controls['nom'].hasError('required')">msg error required</div>
+                        <div *ngIf="myForm.controls['nom'].hasError('minlength')">msg error minlength</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>quantité</label>
+                    <input type="number" class="form-control" formControlName="qt">
+                    <div class="alert alert-danger" *ngIf="myForm.controls['qt'].invalid && myForm.controls['qt'].touched">
+                        <div *ngIf="myForm.controls['qt'].hasError('required')">msg error required</div>
+                    </div>
+                </div>
+                <div class="d-grid gap-2">
+                    <button class="btn btn-outline-primary" type="submit" [disabled]="myForm.invalid">
+                        <i class="fa-solid fa-plus"></i> Ajouter
+                    </button>
+                    <button class="btn btn-outline-warning" type="reset"><i class="fa-solid fa-trash-arrow-up"></i> reset</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</div>
+
